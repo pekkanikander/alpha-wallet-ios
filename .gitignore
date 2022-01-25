@@ -98,3 +98,6 @@ AlphaWalletTests/Snapshots/FailureDiffs
 /.bundle
 /vendor
 .ruby-version
+
+# These seem to change by themselves by XCode
+AlphaWallet.xcodeproj/project.xcworkspace/xcshareddata
