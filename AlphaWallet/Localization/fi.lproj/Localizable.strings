@@ -784,3 +784,5 @@
 "analytics.description" = "Auta meitä kehittämään AlfaLompakkoa jakamalla anonymisoidut käyttötietosi. Jaettu käyttötieto ei sisällä mitään taloudellisia tietoja.";
 "analytics.shareAnonymousData" = "Jaa anynymisoidut käyttötiedot?";
 "email.not.configured" = "Tämän laitteen sähköpostin lähetysasetuksia ei ole määritelty.";
+///
+"app.browser.tabbar.item.title" = "App";

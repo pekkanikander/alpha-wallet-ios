@@ -20,6 +20,7 @@ enum Tabs {
     case alphaWalletSettings
     case transactionsOrActivity
     case browser
+    case appBrowser
 
     var className: String {
         switch self {
@@ -35,6 +36,9 @@ enum Tabs {
             return String(describing: SettingsViewController.self)
         case .browser:
             return String(describing: DappsHomeViewController.self)
+        case .appBrowser:
+            //return String(describing: DappsHomeViewController.self)
+            return String("App")
         }
     }
 }
@@ -77,7 +81,7 @@ class InCoordinator: NSObject, Coordinator {
         return coordinators.compactMap { $0 as? TokensCoordinator }.first
     }
     var dappBrowserCoordinator: DappBrowserCoordinator? {
-        coordinators.compactMap { $0 as? DappBrowserCoordinator }.first
+        coordinators.compactMap { $0 as? DappBrowserCoordinator }.last
     }
     private var activityCoordinator: ActivitiesCoordinator? {
         return coordinators.compactMap { $0 as? ActivitiesCoordinator }.first
@@ -486,6 +490,16 @@ class InCoordinator: NSObject, Coordinator {
         return coordinator
     }
 
+    private func createAppBrowserCoordinator(sessions: ServerDictionary<WalletSession>, analyticsCoordinator: AnalyticsCoordinator) -> DappBrowserCoordinator {
+        let coordinator = DappBrowserCoordinator(sessions: sessions, keystore: keystore, config: config, sharedRealm: realm, browserOnly: true, nativeCryptoCurrencyPrices: nativeCryptoCurrencyPrices, restartQueue: restartQueue, analyticsCoordinator: analyticsCoordinator)
+        coordinator.delegate = self
+        coordinator.start()
+        coordinator.rootViewController.tabBarItem = UITabBarItem(title: R.string.localizable.appBrowserTabbarItemTitle(), image: R.image.tab_app_browser(), selectedImage: nil)
+        addCoordinator(coordinator)
+        coordinator.disableNavigationBar = false
+        return coordinator
+    }
+
     private func createSettingsCoordinator(keystore: Keystore, promptBackupCoordinator: PromptBackupCoordinator) -> SettingsCoordinator {
         let coordinator = SettingsCoordinator(
                 keystore: keystore,
@@ -527,6 +541,9 @@ class InCoordinator: NSObject, Coordinator {
         let browserCoordinator = createBrowserCoordinator(sessions: walletSessions, browserOnly: false, analyticsCoordinator: analyticsCoordinator)
         viewControllers.append(browserCoordinator.navigationController)
 
+        let appBrowserCoordinator = createAppBrowserCoordinator(sessions: walletSessions, analyticsCoordinator: analyticsCoordinator)
+        viewControllers.append(appBrowserCoordinator.navigationController)
+
         let settingsCoordinator = createSettingsCoordinator(keystore: keystore, promptBackupCoordinator: promptBackupCoordinator)
         configureNavigationControllerForLargeTitles(settingsCoordinator.navigationController)
         viewControllers.append(settingsCoordinator.navigationController)
@@ -554,9 +571,17 @@ class InCoordinator: NSObject, Coordinator {
         }
 
         for controller in viewControllers {
-            if let nav = controller as? UINavigationController, nav.viewControllers[0].className == selectTab.className {
-                tabBarController.selectedViewController = nav
-                loadHomePageIfEmpty()
+            if let nav = controller as? UINavigationController {
+                if nav.viewControllers[0].className == selectTab.className {
+                    tabBarController.selectedViewController = nav
+                    loadHomePageIfEmpty()
+                }
+                // Ugly temporary hack FIXME REMOVE XXX
+                else if dappBrowserCoordinator != nil, selectTab.className == "App" {
+                    print("showTab: applying ugly hack")
+                    tabBarController.selectedViewController = dappBrowserCoordinator?.navigationController
+                    loadHomePageIfEmpty()
+                }
             }
         }
     }
@@ -787,7 +812,7 @@ class InCoordinator: NSObject, Coordinator {
                 break
             case .loadUrlInDappBrowser(let url):
                 restartQueue.remove(each)
-                coordinator.showTab(.browser)
+                coordinator.showTab(.appBrowser)
                 coordinator.dappBrowserCoordinator?.open(url: url, animated: false)
             }
         }

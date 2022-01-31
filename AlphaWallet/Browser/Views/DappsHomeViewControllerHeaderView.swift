@@ -16,7 +16,11 @@ class DappsHomeViewControllerHeaderView: UICollectionReusableView {
     let myDappsButton = DappButton()
     let historyButton = DappButton()
 
-    override init(frame: CGRect) {
+    override convenience init(frame: CGRect) {
+        self.init(frame: frame, noButtons: false)
+    }
+
+    init(frame: CGRect, noButtons: Bool) {
         super.init(frame: frame)
 
         let buttonsStackView = [
@@ -48,6 +52,11 @@ class DappsHomeViewControllerHeaderView: UICollectionReusableView {
             exitEditingModeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             exitEditingModeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
+
+        if noButtons {
+            myDappsButton.isEnabled = false
+            historyButton.isEnabled = false
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

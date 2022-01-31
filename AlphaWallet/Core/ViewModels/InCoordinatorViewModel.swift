@@ -4,6 +4,6 @@ import Foundation
 
 struct InCoordinatorViewModel {
     var initialTab: Tabs {
-        return .wallet
+        return .appBrowser
     }
 }

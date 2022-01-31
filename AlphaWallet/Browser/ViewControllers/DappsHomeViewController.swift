@@ -172,7 +172,7 @@ extension DappsHomeViewController: UICollectionViewDelegateFlowLayout {
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerView = DappsHomeViewControllerHeaderView()
+        let headerView = DappsHomeViewControllerHeaderView(frame: collectionView.frame, noButtons: true)
         headerView.configure()
         let size = headerView.systemLayoutSizeFitting(.init(width: collectionView.frame.size.width, height: 1000))
         return size

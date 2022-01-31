@@ -75,6 +75,12 @@ final class DappBrowserCoordinator: NSObject, Coordinator {
         }
     }
 
+     var disableNavigationBar: Bool = false {
+        didSet {
+            browserNavBar?.isHidden = true
+        }
+    }
+
     private var currentUrl: URL? {
         return browserViewController.webView.url
     }
