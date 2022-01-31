@@ -146,7 +146,7 @@
 "wallets.showSeedPhrase.introduction.button.title" = "Ymmärsin. Näytä siemenlause";
 "wallets.showSeedPhrase.introduction.title" = "Varo huijareita!\nÄlä jaa siemenlausetta kenellekään.";
 "wallets.showSeedPhrase.introduction.subtitle" = "Tukipalvelumme ei koskaan pyydä\n siemenlausetta (varsinkaan Telegram:issa).";
-"wallets.showSeedPhrase.subtitle2" = "Siemenlause\n(älä jaa tätä kenellekään)";
+"wallets.showSeedPhrase.subtitle" = "Siemenlause\n(älä jaa tätä kenellekään)";
 "wallets.showSeedPhrase.hideSeedPhrase" = "OK, piilota siemenlause";
 "wallets.showSeedPhrase.title" = "Siemenlause";
 "wallets.showSeedPhrase.testSeedPhrase" = "OK, kirjoitin tämän talteen";
@@ -339,7 +339,7 @@
 "a.wallet.contents.filter.all.title" = "Kaikki";
 "a.wallet.contents.filter.currencyOnly.title" = "Valuutat";
 "a.wallet.contents.filter.assetsOnly.title" = "Omaisuus";
-"a.wallet.contents.filter.collectiblesOnly.title" = "NFTt";
+"a.wallet.contents.filter.collectiblesOnly.title" = "NFT";
 "a.wallet.contents.issuer.title" = "Liikkeeseenlaskija";
 "a.wallet.next.button.title" = "Seuraava";
 "a.wallet.no.tokens" = "Ei rahakkeita";
@@ -739,13 +739,13 @@
 "walletConnect.scanQRCodeAgain" = "Lue QR-koodi uudestaan";
 "donate.shortcuts.walletQrCode" = "Näytä lompakon QR-koodi";
 "whats.new" = "Mitä uutta?";
-"token.testnetWarning" = "Ropsten-rahakkeet eivät ole vaihdettavissa keskuspankkirahaan. Niiden rahallinen arvo on nolla. Sovelluskehittäjät käyttävät niitä testatakseen uusia asioita ilman, että heidän täytyy käyttää 'oikeita' Ethereum-rahakkeita."
+"token.testnetWarning" = "Ropsten-rahakkeet eivät ole vaihdettavissa keskuspankkirahaan. Niiden rahallinen arvo on nolla. Sovelluskehittäjät käyttävät niitä testatakseen uusia asioita ilman, että heidän täytyy käyttää 'oikeita' Ethereum-rahakkeita.";
 "token.value.testnetWarning" = "Ei arvoa, luotu testaustarkoituksiin";
 "whereAreMyTokens.title" = "Missä rahakkeeni ovat?";
-"whereAreMyTokens.description" = "Tuotantoverkon rahakkeesi ovat tallessa. Olet aktivoinut testiverkot (Testnet). Sovelluskehittäjät käyttävät rahakkeita uusien asioiden testaukseen. Voit vaihtaa takaisin tuotantoverkkoihin (Mainnet) milloin vain, niin että tuotantoverkon rahakkeesi tulevat takaisin näkyviin.";
+"whereAreMyTokens.description" = "Tuotantoverkon rahakkeesi ovat tallessa. Olet aktivoinut testiverkot (Testnet). Sovelluskehittäjät käyttävät testiverkon rahakkeita uusien asioiden testaukseen. Voit vaihtaa takaisin tuotantoverkkoihin (Mainnet) milloin vain, niin että tuotantoverkon rahakkeesi tulevat takaisin näkyviin.";
 "whereAreMyTokens.action" = "Aktivoi tuotantoverkot";
-"whereAreMyTokens.testnet" = "Testiverkot";
-"whereAreMyTokens.whereAreMyTokens" = "Mihin rahakkeeni ovat kadonneet?";
+"whereAreMyTokens.testnet" = "Testi";
+"whereAreMyTokens.whereAreMyTokens" = "Missä rahakkeeni ovat?";
 "tokens.searchbar.placeholder" = "Etsittävä rahake";
 "a.wallet.token.selectTokens" = "Valitse";
 "semifungibles.infiniteFungibleToken" = "Infinite Fungible Token";
@@ -777,9 +777,9 @@
 "add.multiple.customRpc.duplicates" = "%@ duplikaattimerkintää jätettiin tekemättä.";
 "add.multiple.customRpc.removed" = "Nämä merkinnät on väliaikaisesti poistettu.";
 "tokens.wallet.renameThisWallet" = "Nimeä lompakko uudelleen";
-"emptyTableView.wallet.title" = "Lompakossa ei ole vielä yhtään %@";
+"emptyTableView.wallet.title" = "Lompakossa ei ole vielä yhtään rahaketta tyyppiä %@";
 "emptyTableView.search.title" = "Ei tuloksia";
 "emptyTableView.all.title" = "Kohteet";
 "analytics.navigationTitle" = "Analytiikka";
-"analytics.description" = "Auta meitä kehittämään AlfaLompakkoa jakamalla anonymisoidut käyttötietosi. Jaettu käyttötieto ei sisällä mitään taloudellisia tietoja."
+"analytics.description" = "Auta meitä kehittämään AlfaLompakkoa jakamalla anonymisoidut käyttötietosi. Jaettu käyttötieto ei sisällä mitään taloudellisia tietoja.";
 "analytics.shareAnonymousData" = "Jaa anynymisoidut käyttötiedot?";
