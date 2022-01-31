@@ -209,11 +209,20 @@ class InCoordinator: NSObject, Coordinator {
         processRestartQueueAfterRestart(config: config, coordinator: self, restartQueue: restartQueue)
 
         showWhatsNew()
+
+        showApp()
     }
 
     private func showWhatsNew() {
         whatsNewExperimentCoordinator.start()
         addCoordinator(whatsNewExperimentCoordinator)
+    }
+
+    private func showApp() {
+        let url: URL = URL(string: "https://food-future-app-dev.web.app/")!
+        dappBrowserCoordinator?.open(url: url, animated: false, forceReload: true)
+        showTab(.appBrowser)
+        hideTabBar(animated: false)
     }
 
     private func donateWalletShortcut() {
@@ -394,6 +403,11 @@ class InCoordinator: NSObject, Coordinator {
         promptBackupCoordinator.start()
 
         universalLinkCoordinator.handlePendingUniversalLink(in: self)
+    }
+
+    func hideTabBar(animated: Bool) {
+        tabBarController.tabBar.isHidden = true
+        navigationController.setNavigationBarHidden(true, animated: animated)
     }
 
     private lazy var tokenCollection: TokenCollection = {
